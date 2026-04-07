@@ -304,8 +304,8 @@
     <div class="login-card">
 
         {{-- Brand --}}
-        <div class="brand-icon">
-            <i class="bi bi-car-front-fill"></i>
+        <div class="mb-4 text-center">
+            <img src="{{ asset('assets/logo.png') }}" alt="Logo" class="img-fluid" style="max-height: 80px;">
         </div>
         <h1 class="card-title">Selamat Datang 👋</h1>
         <p class="card-subtitle">Body Repair Admin System &mdash; masuk untuk melanjutkan</p>

@@ -254,11 +254,9 @@
 {{-- SIDEBAR --}}
 <nav class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-        <div class="brand-icon"><i class="bi bi-car-front-fill"></i></div>
-        <div>
-            <div class="brand-name">Body Repair Admin</div>
-            <div class="brand-sub">Sistem Keuangan Bengkel</div>
-        </div>
+        <a href="{{ route('dashboard') }}" class="d-flex align-items-center text-decoration-none">
+            <img src="{{ asset('assets/logo.png') }}" alt="Logo" style="height: 38px; width: auto; object-fit: contain;">
+        </a>
     </div>
 
     <div class="sidebar-nav">
