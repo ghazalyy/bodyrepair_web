@@ -41,92 +41,67 @@ Pastikan perangkat Anda telah terinstal:
 
 ### Langkah Instalasi
 
-**1. Clone repositori**
+#### 1. Clone repositori
 
 ```bash
-git clone <url-repositori> joki-web
-cd joki-web
+git clone https://github.com/ghazalyy/bodyrepair_web.git
+cd bodyrepair_web
 ```
 
-**2. Install dependensi PHP**
+#### 2. Install dependensi PHP
 
 ```bash
 composer install
 ```
 
-**3. Salin file konfigurasi environment**
+#### 3. Salin file konfigurasi environment
 
 ```bash
 cp .env.example .env
 ```
 
-**4. Generate application key**
+#### 4. Generate application key
 
 ```bash
 php artisan key:generate
 ```
 
-**5. Konfigurasi database**
+#### 5. Konfigurasi database
 
-Buka file `.env` dan sesuaikan pengaturan database. Secara default menggunakan **SQLite**:
-
-```env
-DB_CONNECTION=sqlite
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=nama_database
-# DB_USERNAME=root
-# DB_PASSWORD=
-```
-
-Jika ingin menggunakan **MySQL**, ubah menjadi:
+Buka file `.env` dan sesuaikan pengaturan database. Secara default menggunakan **MySQL** (pastikan sudah membuat database bernama `bodyrepair_web`):
 
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=joki_web
+DB_DATABASE=bodyrepair_web
 DB_USERNAME=root
-DB_PASSWORD=password_anda
+DB_PASSWORD=
 ```
 
-**6. Buat file database SQLite** *(lewati jika menggunakan MySQL)*
+#### 6. Jalankan migrasi dan seeder (Sangat disarankan untuk data awal)
 
 ```bash
-touch database/database.sqlite
-# Atau di Windows:
-# type nul > database\database.sqlite
+php artisan migrate:fresh --seed
 ```
 
-**7. Jalankan migrasi database**
-
-```bash
-php artisan migrate
-```
-
-**8. Install dependensi Node.js**
+#### 7. Install dependensi Node.js & Compile Asset
 
 ```bash
 npm install
-```
-
-**9. Build aset frontend**
-
-```bash
 npm run build
 ```
 
-> **Instalasi selesai!** Jalankan aplikasi dengan langkah di bawah.
-
 ---
 
-### Instalasi Cepat (Opsional)
+## 🔐 Akun Demo (Default Seeder)
 
-Tersedia script otomatis yang menggabungkan semua langkah di atas:
+Setelah menjalankan seeder di atas, Anda dapat login menggunakan akun berikut:
 
-```bash
-composer run setup
-```
+| Peran | Email | Password |
+|---|---|---|
+| **Admin** | `admin@bodyrepair.com` | `password123` |
+| **Owner** | `owner@bodyrepair.com` | `password123` |
 
 ---
 
@@ -134,13 +109,13 @@ composer run setup
 
 ### Mode Development (Direkomendasikan)
 
-Jalankan semua layanan sekaligus (server, queue, log, dan Vite) dengan satu perintah:
+Jalankan semua layanan sekaligus (server Laravel dan Vite) dengan satu perintah:
 
 ```bash
 composer run dev
 ```
 
-Kemudian buka browser dan akses: **[http://localhost:8000](http://localhost:8000)**
+Akses di browser: **[http://localhost:8000](http://localhost:8000)**
 
 ### Mode Manual
 
@@ -160,7 +135,7 @@ npm run dev
 
 ### 1. Login
 
-Buka aplikasi di browser, kemudian login menggunakan akun yang telah terdaftar. Jika belum ada akun, daftarkan melalui halaman **Register**.
+Buka aplikasi di browser, kemudian login menggunakan akun yang telah diseed (atau gunakan akun yang sudah ada). Akun default dapat dilihat pada bagian **Akun Demo** di atas.
 
 ### 2. Dashboard
 
@@ -173,6 +148,7 @@ Setelah login, Anda akan diarahkan ke halaman **Dashboard** yang menampilkan:
 - 5 transaksi terbaru
 
 Gunakan filter **bulan** dan **tahun** di pojok kanan atas untuk melihat statistik periode lain.
+
 
 ### 3. Manajemen Pelanggan
 
