@@ -57,5 +57,8 @@ class DatabaseSeeder extends Seeder
         foreach ($layanans as $l) {
             Layanan::create($l);
         }
+
+        // Seed Data Keuangan
+        $this->call(FinanceSeeder::class);
     }
 }
