@@ -84,4 +84,44 @@ class Transaksi extends Model
         $seq    = $last ? ((int) substr($last->no_nota, -4)) + 1 : 1;
         return $prefix . str_pad($seq, 4, '0', STR_PAD_LEFT);
     }
+
+    protected static function booted()
+    {
+        static::deleting(function ($transaksi) {
+            // Hapus data keuangan terkait saat transaksi dihapus
+            $transaksi->dataKeuangan()->delete();
+        });
+
+        static::updated(function ($transaksi) {
+            // Sinkronisasi data keuangan jika ada perubahan status atau dp
+            if ($transaksi->wasChanged(['status_transaksi', 'dp', 'total_bayar', 'tanggal'])) {
+                $jmlPemasukan = ($transaksi->status_transaksi === 'Lunas') ? (float) $transaksi->total_bayar : (float) $transaksi->dp;
+                
+                // Cari data keuangan secara manual jika relasi tidak dimuat
+                $dataKeuangan = \App\Models\DataKeuangan::where('id_transaksi', $transaksi->id_transaksi)->first();
+
+                if ($dataKeuangan) {
+                    if ($jmlPemasukan > 0) {
+                        $dataKeuangan->update([
+                            'jumlah'     => $jmlPemasukan,
+                            'tanggal'    => $transaksi->tanggal,
+                            'keterangan' => 'Pembayaran Nota: ' . $transaksi->no_nota . ' (' . $transaksi->status_transaksi . ')',
+                        ]);
+                    } else {
+                        $dataKeuangan->delete();
+                    }
+                } elseif ($jmlPemasukan > 0) {
+                    \App\Models\DataKeuangan::create([
+                        'id_user'      => \Illuminate\Support\Facades\Auth::id() ?? $transaksi->id_user,
+                        'tanggal'      => $transaksi->tanggal,
+                        'jenis'        => 'pemasukan',
+                        'jumlah'       => $jmlPemasukan,
+                        'keterangan'   => 'Pembayaran Nota: ' . $transaksi->no_nota . ' (' . $transaksi->status_transaksi . ')',
+                        'id_transaksi' => $transaksi->id_transaksi,
+                    ]);
+                }
+            }
+        });
+    }
 }
+
