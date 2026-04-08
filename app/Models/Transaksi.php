@@ -80,7 +80,7 @@ class Transaksi extends Model
     public static function generateNoNota(): string
     {
         $prefix = 'NOTA-' . date('Ymd');
-        $last   = self::where('no_nota', 'like', $prefix . '%')->latest('id_transaksi')->first();
+        $last   = self::withTrashed()->where('no_nota', 'like', $prefix . '%')->latest('id_transaksi')->first();
         $seq    = $last ? ((int) substr($last->no_nota, -4)) + 1 : 1;
         return $prefix . str_pad($seq, 4, '0', STR_PAD_LEFT);
     }
