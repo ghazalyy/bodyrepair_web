@@ -13,19 +13,23 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Seed Users
-        User::create([
-            'nama'     => 'Admin Body Repair',
-            'email'    => 'admin@bodyrepair.com',
-            'password' => Hash::make('password123'),
-            'role'     => 'admin',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@bodyrepair.com'],
+            [
+                'nama' => 'Admin Body Repair',
+                'password' => bcrypt('password123'),
+                'role' => 'admin'
+            ]
+        );
 
-        User::create([
-            'nama'     => 'Owner Body Repair',
-            'email'    => 'owner@bodyrepair.com',
-            'password' => Hash::make('password123'),
-            'role'     => 'owner',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'owner@bodyrepair.com'],
+            [
+                'nama' => 'Owner Body Repair',
+                'password' => bcrypt('password123'),
+                'role'     => 'owner',
+            ]
+        );
 
         // Seed Pelanggan
         $pelanggans = [

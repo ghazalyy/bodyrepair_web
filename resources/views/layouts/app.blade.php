@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Dashboard') | Body Repair Admin</title>
+    <title>@yield('title', 'Dashboard') | Garasi Kampoeng X HGMP Admin</title>
     <meta name="description" content="Sistem Informasi Administrasi Keuangan Jasa Body Repair Kendaraan">
 
     {{-- Bootstrap 5 --}}
