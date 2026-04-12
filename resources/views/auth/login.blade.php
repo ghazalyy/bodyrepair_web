@@ -330,7 +330,7 @@
                         id="email"
                         name="email"
                         class="field-input @error('email') is-invalid @enderror"
-                        placeholder="admin@bodyrepair.com"
+                        placeholder="admin@gkxhgmp.com"
                         value="{{ old('email') }}"
                         autocomplete="email"
                         required>
@@ -372,11 +372,11 @@
         {{-- Demo accounts --}}
         <div class="demo-box">
             <strong>Demo akun:</strong><br>
-            Admin: <code>admin@bodyrepair.com</code> / <code>password123</code><br>
-            Owner: <code>owner@bodyrepair.com</code> / <code>password123</code>
+            Admin: <code>admin@gkxhgmp.com</code> / <code>password123</code><br>
+            Owner: <code>owner@gkxhgmp.com</code> / <code>password123</code>
         </div>
 
-        <p class="card-footer-text">&copy; {{ date('Y') }} Body Repair Admin &mdash; All rights reserved</p>
+        <p class="card-footer-text">&copy; {{ date('Y') }} Garasi Kampoeng X HGMP Admin &mdash; All rights reserved</p>
     </div>
 
     <script>

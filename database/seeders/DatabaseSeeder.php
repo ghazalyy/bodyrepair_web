@@ -14,18 +14,18 @@ class DatabaseSeeder extends Seeder
     {
         // Seed Users
         User::updateOrCreate(
-            ['email' => 'admin@bodyrepair.com'],
+            ['email' => 'admin@gkxhgmp.com'],
             [
-                'nama' => 'Admin Body Repair',
+                'nama' => 'Admin Garasi Kampoeng X HGMP',
                 'password' => bcrypt('password123'),
                 'role' => 'admin'
             ]
         );
 
         User::updateOrCreate(
-            ['email' => 'owner@bodyrepair.com'],
+            ['email' => 'owner@gkxhgmp.com'],
             [
-                'nama' => 'Owner Body Repair',
+                'nama' => 'Owner Garasi Kampoeng X HGMP',
                 'password' => bcrypt('password123'),
                 'role'     => 'owner',
             ]
