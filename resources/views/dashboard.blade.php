@@ -47,14 +47,14 @@
     <div class="col-6 col-md-4 col-xl-2">
         <div class="stat-card">
             <div class="stat-icon gradient-green"><i class="bi bi-arrow-up-circle-fill"></i></div>
-            <div class="stat-value" style="font-size:1.1rem;">Rp {{ number_format($totalPemasukan/1000000,1) }}jt</div>
+            <div class="stat-value" style="font-size:.95rem;">Rp {{ number_format($totalPemasukan,0,',','.') }}</div>
             <div class="stat-label">Total Pemasukan</div>
         </div>
     </div>
     <div class="col-6 col-md-4 col-xl-2">
         <div class="stat-card">
             <div class="stat-icon gradient-red"><i class="bi bi-arrow-down-circle-fill"></i></div>
-            <div class="stat-value" style="font-size:1.1rem;">Rp {{ number_format($totalPengeluaran/1000000,1) }}jt</div>
+            <div class="stat-value" style="font-size:.95rem;">Rp {{ number_format($totalPengeluaran,0,',','.') }}</div>
             <div class="stat-label">Total Pengeluaran</div>
         </div>
     </div>
@@ -63,7 +63,7 @@
             <div class="stat-icon {{ $totalLaba >= 0 ? 'gradient-indigo' : 'gradient-red' }}">
                 <i class="bi bi-cash-stack"></i>
             </div>
-            <div class="stat-value" style="font-size:1.1rem;">Rp {{ number_format(abs($totalLaba)/1000000,1) }}jt</div>
+            <div class="stat-value" style="font-size:.95rem;">Rp {{ number_format(abs($totalLaba),0,',','.') }}</div>
             <div class="stat-label">{{ $totalLaba >= 0 ? 'Laba Bersih' : 'Rugi Bersih' }}</div>
         </div>
     </div>
