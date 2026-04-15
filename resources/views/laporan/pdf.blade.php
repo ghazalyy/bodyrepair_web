@@ -99,7 +99,7 @@ table.rtbl tr.rloss td  { background: #fef2f2; color: #dc2626; border-top: 2px s
                 <div class="logo-box">BR</div>
             </td>
             <td style="vertical-align:middle; padding-left:10px;">
-                <div class="kop-nama">Garasi Kampoeng X HGMPG</div>
+                <div class="kop-nama">Garasi Kampoeng X HGMP</div>
                 <div class="kop-sub">Sistem Administrasi Keuangan Bengkel</div>
             </td>
             <td style="vertical-align:middle; text-align:right; width:200px;">
