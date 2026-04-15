@@ -89,9 +89,9 @@ class LaporanController extends Controller
 
         $pdf = Pdf::loadView('laporan.pdf', compact(
             'dataKeuangans', 'totalPemasukan', 'totalPengeluaran', 'totalLaba', 'dari', 'sampai'
-        ))->setPaper('a4', 'portrait');
+        ))->setPaper('a4', 'landscape');
 
-        return $pdf->download('laporan-keuangan-' . $dari . '-sd-' . $sampai . '.pdf');
+        return $pdf->stream('laporan-keuangan-' . $dari . '-sd-' . $sampai . '.pdf');
     }
 
     // Rekap transaksi (khusus Owner)
