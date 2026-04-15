@@ -7,6 +7,7 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\FeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,10 @@ Route::middleware(['auth', 'jwt'])->group(function () {
 
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Lembar Saran dan Masukan Pengembangan
+    Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+    Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 
     /*
     |----------------------------------------------------------------------

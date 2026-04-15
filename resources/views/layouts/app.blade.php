@@ -308,6 +308,15 @@
                 </a>
             </li>
         </ul>
+
+        <div class="nav-section-title">Lainnya</div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a href="{{ route('feedback.index') }}" class="nav-link {{ request()->routeIs('feedback.*') ? 'active' : '' }}">
+                    <i class="bi bi-chat-square-text-fill"></i> Lembar Saran
+                </a>
+            </li>
+        </ul>
     </div>
 
     <div class="sidebar-footer">
